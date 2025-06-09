@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "a2a_demo"
+version = "0.1.0"
+description = "A2A协议搜索智能体演示"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "Copilot", email = "example@example.com"}
+]
+
+dependencies = [
+    "a2a-python",
+    "langchain-openai",
+    "langgraph>=0.0.17",
+    "pydantic>=2.0.0",
+    "httpx",
+    "uvicorn",
+    "python-dotenv",
+    "click",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "isort",
+    "mypy",
+    "flake8",
+    "pytest",
+    "pytest-asyncio",
+]
+
+[tool.setuptools]
+packages = ["a2a_demo"]
+
+[tool.black]
+line-length = 88
+target-version = ["py39"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
